@@ -4,14 +4,18 @@
 #include <fstream>
 #include <unordered_map>
 #include <set>
-
+using namespace std;
 struct UserNode
 {
-    std::string username;
-    std::string password;
+    string username;
+    string password;
     UserNode* next;
 
-    UserNode(std::string uname, std::string pword) : username(uname), password(pword), next(nullptr) {}
+    UserNode(string uname, string pword)
+    {
+        username = uname;
+        password = pword;
+    }
 };
 
 class UserHashTable
@@ -19,7 +23,7 @@ class UserHashTable
 private:
     UserNode** table;
     int capacity;
-    int hashFunction(std::string key);
+    int hashFunction(string key);
     void loadFromFile();
     void saveToFile();
     void saveUsername();
@@ -27,8 +31,8 @@ private:
 public:
     UserHashTable(int size);
     ~UserHashTable();
-    bool registerUser(std::string username, std::string password);
-    bool loginUser(std::string username, std::string password);
+    bool registerUser(string username, string password);
+    bool loginUser(string username, string password);
     void logoutUser();
     void viewProfile();
 };
