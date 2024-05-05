@@ -5,8 +5,9 @@
 #include <unordered_map>
 #include <set>
 using namespace std;
-struct UserNode
+class UserNode
 {
+public:
     string username;
     string password;
     UserNode* next;
@@ -33,7 +34,5 @@ public:
     ~UserHashTable();
     bool registerUser(string username, string password);
     bool loginUser(string username, string password);
-    void logoutUser();
-    void viewProfile();
 };
 
