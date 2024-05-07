@@ -4,6 +4,8 @@
 #include <string>
 #include <queue>
 #include <vector>
+#include "Users.h"
+#include "Social.h"
 #include "Repository.h"
 using namespace std;
 
@@ -168,7 +170,7 @@ void RepositoryManager::saveHelper(TreeNode* node, ofstream& file) {
     for (TreeNode* child : node->children)
         saveHelper(child, file);
 }
-void RepositoryManager::loadFromFile(string filename) 
+void RepositoryManager::loadFromFile(string filename)
 {
     ifstream file(filename);
     if (!file.is_open()) {

@@ -25,7 +25,6 @@ private:
     UserNode** table;
     int capacity;
     int hashFunction(string key);
-    void loadFromFile();
     void saveToFile();
     void saveUsername();
 
@@ -34,5 +33,5 @@ public:
     ~UserHashTable();
     bool registerUser(string username, string password);
     bool loginUser(string username, string password);
+    void loadFromFile();
 };
-

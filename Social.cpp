@@ -53,4 +53,3 @@ void Graph::displayFollowers(const string& username)
     }
     cout << endl;
 }
-s

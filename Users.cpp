@@ -5,14 +5,12 @@
 #include <unordered_map>
 #include <set>
 using namespace std;
-
 UserHashTable::UserHashTable(int size)
 {
     capacity = size;
     table = new UserNode * [capacity];
     for (int i = 0; i < capacity; ++i)
         table[i] = nullptr;
-    loadFromFile();
 }
 
 UserHashTable::~UserHashTable()
@@ -31,7 +29,6 @@ UserHashTable::~UserHashTable()
     }
     delete[] table;
 }
-
 int UserHashTable::hashFunction(string key)
 {
     int hash = 0;
@@ -39,7 +36,6 @@ int UserHashTable::hashFunction(string key)
         hash = (hash * 31 + c) % capacity;
     return hash;
 }
-
 void UserHashTable::loadFromFile()
 {
     ifstream file("userdata.txt");
@@ -53,7 +49,6 @@ void UserHashTable::loadFromFile()
         file.close();
     }
 }
-
 void UserHashTable::saveToFile()
 {
     ofstream file("userdata.txt");
@@ -64,14 +59,13 @@ void UserHashTable::saveToFile()
             UserNode* current = table[i];
             while (current != nullptr)
             {
-                file << current->username << " " << current->password << endl;
+                file << current->username << " " << current->password << std::endl;
                 current = current->next;
             }
         }
         file.close();
     }
 }
-
 void UserHashTable::saveUsername()
 {
     ofstream file("usernames.txt");
@@ -82,14 +76,13 @@ void UserHashTable::saveUsername()
             UserNode* current = table[i];
             while (current != nullptr)
             {
-                file << current->username << endl;
+                file << current->username << std::endl;
                 current = current->next;
             }
         }
         file.close();
     }
 }
-
 bool UserHashTable::registerUser(string username, string password)
 {
     int index = hashFunction(username);
@@ -114,7 +107,6 @@ bool UserHashTable::registerUser(string username, string password)
     }
     return true;
 }
-
 bool UserHashTable::loginUser(string username, string password)
 {
     int index = hashFunction(username);
