@@ -13,7 +13,7 @@ using namespace std;
 
 int main()
 {
-    system("color 04");
+    system("color 70");
 
     cout << R"(
  <>=<>=<>=<>=<>=<>=<>=<>=<>=<>=<>=<>=<>=<>=<>=<>=<>=<>=<>=<>=<>
@@ -27,6 +27,7 @@ int main()
 )" << endl;
 
     UserHashTable userTable(10);
+    userTable.loadFromFile();
     cout << "||||||||||| Welcome to GITHUB |||||||||||" << endl;
     cout << "\n1- Registeration " << endl;
     cout << "2-Login" << endl;
@@ -62,7 +63,9 @@ int main()
 
                 int choice;
                 do {
-                    cout << "====== Repository Management System ======" << endl;
+                    cout << "--------------------------------------------------" << endl;
+                    cout << "|=<>=<>=<> Repository Management System <>=<>=<>=|" << endl;
+                    cout << "--------------------------------------------------" << endl;
                     cout << "1- Create Repository" << endl;
                     cout << "2- Add Commit" << endl;
                     cout << "3- Add File" << endl;
@@ -78,10 +81,21 @@ int main()
                     int commitId;
                     switch (choice) {
                     case 1:
+                        int num;
                         cout << "Enter repository name: ";
                         cin >> name;
-                        /* cout << "Enter parent repository name (or leave blank for root): ";
-                         cin >> parentName;*/
+                        cout << "Is there any Parent Repository? " << endl;
+                        cout << "1- Yes" << endl;
+                        cout << "2- No" << endl;
+                        cout << ">>- Enter your choice: ";
+                        cin >> num;
+                        if(num == 1)
+                        cout << "Enter parent repository name: ";
+                        cin >> parentName;
+                        if (num == 2)
+                        {
+                            cout << "Repository is created!" << endl;
+                        }
                         manager.createRepository(name, parentName);
                         break;
                     case 2:
@@ -107,7 +121,7 @@ int main()
                         manager.deleteRepository(name);
                         break;
                     case 5:
-                        cout << "====== Display Repositories ======" << endl;
+                        cout << "|| = < >= < >= <> Display Repositories <>=<>=<>= ||" << endl;
                         manager.display();
                         cout << "=================================" << endl;
                         break;
