@@ -121,9 +121,11 @@ void RepositoryManager::display()
     }
     queue <TreeNode*> q;
     q.push(root);
+    cout << "\n>>>> Repository Details <<<<" << endl;
     while (!q.empty()) {
         TreeNode* current = q.front();
         q.pop();
+        cout << " Repository Name: ";
         cout << current->repositoryName << endl;
         cout << "Commits:" << endl;
         CommitNode* commit = current->commitsHead;

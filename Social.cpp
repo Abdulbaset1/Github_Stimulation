@@ -49,7 +49,7 @@ void Graph::displayFollowers(const string& username)
     }
     cout << "Users followed by '" << username << "': ";
     for (const auto& followee : adjacencyList[username]) {
-        cout << followee << " ";
+        cout << followee << ", ";
     }
     cout << endl;
 }

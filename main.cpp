@@ -53,6 +53,7 @@ int main()
         cin >> password;
         if (userTable.loginUser(name, password))
         {
+            cout << ">>>>>|||| Welcome ||||<<<<<" << endl;
             cout << "1- Repositories Management" << endl;
             cout << "2- Social Connections" << endl;
             cout << ">>- Enter your choice: ";
@@ -89,10 +90,12 @@ int main()
                         cout << "2- No" << endl;
                         cout << ">>- Enter your choice: ";
                         cin >> num;
-                        if(num == 1)
-                        cout << "Enter parent repository name: ";
-                        cin >> parentName;
-                        if (num == 2)
+                        if (num == 1)
+                        {
+                            cout << "Enter parent repository name: ";
+                            cin >> parentName;
+                        }
+                        else if (num == 2)
                         {
                             cout << "Repository is created!" << endl;
                         }
@@ -147,67 +150,67 @@ int main()
 
 
             }
-            else
+            else if (c == 2)
             {
-                cout << ">>- Error: Invalid 'Username' and 'Password'" << endl;
+                Graph socialNetwork;
+
+                while (true)
+                {
+                    cout << "_______________________________________________" << endl;
+                    cout << "|=<>=<>=<> Social Network Management  <>=<>=<>=|" << endl;
+                    cout << "-----------------------------------------------" << endl;
+                    cout << "1- Add User" << endl;
+                    cout << "2- Follow User" << endl;
+                    cout << "3- Unfollow User" << endl;
+                    cout << "4- Display Followed Users" << endl;
+                    cout << "5- Exit" << endl;
+                    cout << ">>- Enter your choice: ";
+
+                    int choice;
+                    cin >> choice;
+
+                    string username, follower, followee;
+
+                    switch (choice) {
+                    case 1:
+                        cout << "Enter username: ";
+                        cin >> username;
+                        socialNetwork.addUser(username);
+                        break;
+                    case 2:
+                        cout << "Enter follower username: ";
+                        cin >> follower;
+                        cout << "Enter followee username: ";
+                        cin >> followee;
+                        socialNetwork.follow(follower, followee);
+                        break;
+                    case 3:
+                        cout << "Enter follower username: ";
+                        cin >> follower;
+                        cout << "Enter followee username: ";
+                        cin >> followee;
+                        socialNetwork.unfollow(follower, followee);
+                        break;
+                    case 4:
+                        cout << "Enter username: ";
+                        cin >> username;
+                        socialNetwork.displayFollowers(username);
+                        cout << "=================================" << endl;
+                        break;
+                    case 5:
+                        cout << "___________________________________" << endl;
+                        cout << "|||||||||| GOOD BYE :) ||||||||||||" << endl;
+                        cout << "-----------------------------------" << endl;
+                        return 0;
+                    default:
+                        cout << "Invalid choice. Please try again." << endl;
+                    }
+                }
             }
         }
         else if (c == 2)
         {
-            Graph socialNetwork;
-
-            while (true)
-            {
-                cout << "_______________________________________________" << endl;
-                cout << "|=<>=<>=<> Social Network Management  <>=<>=<>=|" << endl;
-                cout << "-----------------------------------------------" << endl;
-                cout << "1- Add User" << endl;
-                cout << "2- Follow User" << endl;
-                cout << "3- Unfollow User" << endl;
-                cout << "4- Display Followed Users" << endl;
-                cout << "5- Exit" << endl;
-                cout << ">>- Enter your choice: ";
-
-                int choice;
-                cin >> choice;
-
-                string username, follower, followee;
-
-                switch (choice) {
-                case 1:
-                    cout << "Enter username: ";
-                    cin >> username;
-                    socialNetwork.addUser(username);
-                    break;
-                case 2:
-                    cout << "Enter follower username: ";
-                    cin >> follower;
-                    cout << "Enter followee username: ";
-                    cin >> followee;
-                    socialNetwork.follow(follower, followee);
-                    break;
-                case 3:
-                    cout << "Enter follower username: ";
-                    cin >> follower;
-                    cout << "Enter followee username: ";
-                    cin >> followee;
-                    socialNetwork.unfollow(follower, followee);
-                    break;
-                case 4:
-                    cout << "Enter username: ";
-                    cin >> username;
-                    socialNetwork.displayFollowers(username);
-                    cout << "=================================" << endl;
-                    break;
-                case 5:
-                    cout << "___________________________________" << endl;
-                    cout << "|||||||||| GOOD BYE :) ||||||||||||" << endl;
-                    cout << "-----------------------------------" << endl;
-                    return 0;
-                default:
-                    cout << "Invalid choice. Please try again." << endl;
-                }
-            }
+            cout << "Error: Invalid username and password!" << endl;
         }
     }
     else if (c == 0)
